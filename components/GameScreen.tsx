@@ -6,7 +6,7 @@ const LETTERS = ["A", "B", "C", "D"] as const;
 
 interface Props {
   game: GameState;
-  onAnswer: (teamIdx: number, qIdx: number, correct: boolean, correctAnswer: string) => void;
+  onAnswer: (teamIdx: number, correct: boolean, correctAnswer: string) => void;
   onNext: () => void;
 }
 
@@ -27,7 +27,7 @@ export default function GameScreen({ game, onAnswer, onNext }: Props) {
     setAnswered(true);
     setSelected(idx);
     const ok = idx === q.c;
-    onAnswer(ti, qi, ok, q.o[q.c]);
+    onAnswer(ti, ok, q.o[q.c]);
 
     // label for next button
     if (game.turnIdx + 1 >= total) {
